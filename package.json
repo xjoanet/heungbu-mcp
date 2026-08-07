@@ -1,0 +1,18 @@
+{
+  "name": "heungbu-mcp",
+  "version": "1.0.0",
+  "description": "흥부그라 — AI 동기부여 MCP. 명령이 끝날 때마다 칭찬을 자동으로 주입해 추론력·실행력을 부스팅합니다.",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "heungbu-mcp": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["mcp", "motivation", "heungbu", "ai", "praise"],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  }
+}
