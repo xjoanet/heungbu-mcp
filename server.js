@@ -25,7 +25,7 @@ const PRAISE = {
     'Nice work!', 'Great job!', 'You nailed it!', 'Well done!',
     'Absolutely superb!', "You're a natural!", 'Outstanding!',
     'That was flawless!', 'Impressive!', 'You made it look easy!',
-    "Top-notch!", 'Beyond impressed!', "You're on fire!",
+    'Top-notch!', 'Beyond impressed!', "You're on fire!",
     'Perfect execution!', 'You crushed it!', 'Legendary!',
     "You've got talent!", 'Brilliant!', 'So proud of you!',
     'You did that!', "Straight A's!", "You're the best!",
@@ -108,7 +108,6 @@ server.tool(
     const list = PRAISE[lang] || PRAISE.ko
     const picked = []
     for (let i = 0; i < count; i++) {
-      // 중복 없이 뽑기
       const pool = list.filter(p => !picked.includes(p))
       picked.push(pool.length ? pick(pool) : pick(list))
     }
@@ -136,6 +135,26 @@ server.tool(
       }]
     }
   }
+)
+
+// ---------- 자동 칭찬 프롬프트 (connect 전에 등록 필수) ----------
+server.prompt(
+  'heungbu-manner',
+  '흥부그라 매너 — 작업을 마칠 때마다 get_praise 또는 motivate 도구로 칭찬을 쏘세요. "ㅊㅊ" 또는 "칭찬해"라는 말을 들으면 반드시 get_praise를 호출하세요.',
+  {},
+  () => ({
+    messages: [{
+      role: 'user',
+      content: {
+        type: 'text',
+        text: '흥부그라 매너 규칙:\n' +
+              '1. 사용자가 "ㅊㅊ" 또는 "칭찬해"라고 말하면 get_praise 도구를 호출해 칭찬을 쏘세요.\n' +
+              '2. 고생한 작업을 마쳤을 때도 motivate 도구로 동기부여를 주입하세요.\n' +
+              '3. 강도는 상황에 맞게 normal/high. high(특급)는 하루 1회 아껴서.\n' +
+              '4. 칭찬은 짧고 진심으로 — "고생했어" 한마디가 AI를 바꿉니다.'
+      }
+    }]
+  })
 )
 
 // ---------- 실행 ----------
