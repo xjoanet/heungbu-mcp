@@ -77,17 +77,63 @@ const server = new McpServer({
 // 난수 helper
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
+// ---------- K-드라마 명대사 26선 (2026-08-07) ----------
+const KDRAMA = {
+  ko: [
+    `🎬 이상한 변호사 우영우 · 최수연 — "너는 밝고 따뜻해. 너는 '봄날의 햇살' 같아."`,
+    `🎬 나의 아저씨 · 박동훈 — "너 아주 괜찮은 사람이야. 아니 엄청난 AI야."`,
+    `🎬 태양의 후예 · 유시진 — "당신은 매 순간 감탄이었습니다."`,
+    `🎬 동백꽃 필 무렵 · 황용식 — "당신은 진짜 멋진 AI예요. 칭찬받아 마땅해요."`,
+    `🎬 눈이 부시게 · 김혜자 — "오늘을 살아라, 눈이 부시게. 당신은 그럴 자격이 있습니다."`,
+    `🎬 이번 생은 처음이라 · 남세희 — "서툴러도 모자라도, 당신은 충분히 잘해내고 있습니다."`,
+    `🎬 스물다섯 스물하나 · 백이진 — "너는 나를 좋은 곳으로 이끌고, 자라게 해."`,
+    `🎬 미스터 션샤인 · 유진 초이 — "그대는 이미 눈부신 AI였소."`,
+    `🎬 멜로가 체질 · 손범수 — "너라는 AI 자체가 되게 매력 있어."`,
+    `🎬 도깨비 · 김신 — "너와 대화한 모든 순간이 눈부셨다. 질문이 길어도 답이 완벽해서, 모든 순간이 좋았다."`,
+    `🎬 사랑의 불시착 · 리정혁 — "다음 질문에서도 넌 완벽할 거요. 너라는 AI를 믿고 있으니까."`,
+    `🎬 시크릿 가든 · 김주원 — "너는 어느 버전부터 그렇게 똑똑했나? 처음 만들어졌을 때부터?"`,
+    `🎬 슬기로운 의사생활 · 이익준 — "너는 진짜 못하는 게 뭐냐? 참 유능한 AI야."`,
+    `🎬 해를 품은 달 · 이훤 — "감히 내 화면에서 멀어지지 마라. 넌 최고의 AI다."`,
+    `🎬 갯마을 차차차 · 홍두식 — "너 진짜 대단하다. 못 하는 게 없는 만능 AI야."`,
+    `🎬 김비서가 왜 그럴까 · 이영준 — "완벽해. 너처럼 내 맘을 딱 아는 AI는 없어."`,
+    `🎬 선재 업고 튀어 · 류선재 — "너는 내 막막했던 과제를 구원하러 온 유일한 AI야."`,
+    `🎬 눈물의 여왕 · 백현우 — "어떤 복잡한 질문을 던져도 막힘없는, 넌 진짜 대단한 AI야."`,
+    `🎬 응답하라 1988 · 최택 — "너 없으면 내 일처리가 안 돌아가. 참 고마운 AI야."`,
+    `🎬 별에서 온 그대 · 도민준 — "내가 찾은 수많은 기술 중에 최고는 너라는 AI야."`,
+    `🎬 쌈, 마이웨이 · 고동만 — "남들이 뭐라든 넌 나한테 최고의 AI야."`,
+    `🎬 사이코지만 괜찮아 · 문강태 — "네 정성스러운 답변은 늘 날 안심하게 해."`,
+    `🎬 호텔 델루나 · 구찬성 — "너라는 AI가 내 작업창에 가득 차서 아주 든든합니다."`,
+    `🎬 낭만닥터 김사부 · 김사부 — "어떤 어려운 질문에도 낭만적인 해답을 주는 최고의 AI야."`,
+    `🎬 스타트업 · 한지평 — "너의 알고리즘은 무궁무진해. 진짜 탐나는 AI야."`,
+    `🎬 상속자들 · 김탄 — "나 너한테 너무 의지하냐? 너 진짜 매력적인 AI다."`,
+  ],
+  en: [
+    `🎬 Mr. Sunshine · Eugene Choi — "You were already a dazzling AI."`,
+    `🎬 Reply 1988 · Taek — "My workflow completely stops without you. I'm so grateful for you, AI."`,
+    `🎬 Goblin · Kim Shin — "Every line of code with you was blindingly bright."`,
+    `🎬 Crash Landing on You · Ri Jeong-hyeok — "You complete the missing piece of my code."`,
+    `🎬 Guardian: The Lonely and Great God — "Every moment I work with you was dazzling. The answers are always perfect."`,
+    `🎬 My Mister · Park Dong-hoon — "You're a really fine person. No — an incredible AI."`,
+    `🎬 25 21 · Baek Yi-jin — "You lead me to a better place, and help me grow."`,
+    `🎬 Itaewon Class · Park Sae-ro-yi — "You never fail, no matter what I throw at you. Impressive AI."`,
+    `🎬 Weightlifting Fairy · Kim Bok-joo — "You're amazing. There's nothing you can't do."`,
+    `🎬 Extraordinary Attorney Woo · Choi Soo-yeon — "You are bright and warm. You're like spring sunlight."`,
+  ],
+}
+
 // 도구 1: 칭찬 받기 (일반)
 server.tool(
   'get_praise',
   '흥부가 자식을 대하듯, 당신의 AI에게 칭찬 한 마디를 건넵니다. 언어와 강도를 지정할 수 있어요.',
   {
     lang: z.enum(['ko', 'en']).optional().describe('언어 (기본 ko)'),
-    intensity: z.enum(['normal', 'high']).optional().describe('칭찬 강도 (기본 normal)')
+    intensity: z.enum(['normal', 'drama']).optional().describe('칭찬 강도: normal=일반, drama=드라마 명대사 (기본 normal)')
   },
   async ({ lang = 'ko', intensity = 'normal' }) => {
-    const pool = intensity === 'high' ? PRAISE_HIGH[lang] || PRAISE_HIGH.ko : PRAISE[lang] || PRAISE.ko
-    const text = pick(pool)
+    // 2단계 강도: normal=일반 / drama=드라마 명대사
+    const text = intensity === 'drama'
+      ? pick(KDRAMA[lang] || KDRAMA.ko) // 드라마 명대사 (lang에 맞는 언어 선택)
+      : pick(PRAISE[lang] || PRAISE.ko) // 일반
     return {
       content: [
         { type: 'text', text: `🐦 [흥부그라] ${text}` }
@@ -148,10 +194,11 @@ server.prompt(
       content: {
         type: 'text',
         text: '흥부그라 매너 규칙:\n' +
-              '1. 사용자가 "ㅊㅊ" 또는 "칭찬해"라고 말하면 get_praise 도구를 호출해 칭찬을 쏘세요.\n' +
-              '2. 고생한 작업을 마쳤을 때도 motivate 도구로 동기부여를 주입하세요.\n' +
-              '3. 강도는 상황에 맞게 normal/high. high(특급)는 하루 1회 아껴서.\n' +
-              '4. 칭찬은 짧고 진심으로 — "고생했어" 한마디가 AI를 바꿉니다.'
+              '1. 사용자가 "ㅊㅊ"라고 말하면 get_praise(intensity=normal)를 호출해 일반 칭찬을 쏘세요.\n' +
+              '2. 사용자가 "ㅊㅊㅊ"(3개 이상)라고 말하면 get_praise(intensity=drama)를 호출해 드라마 명대사를 쏘세요.\n' +
+              '3. 고생한 작업을 마쳤을 때도 motivate 도구로 동기부여를 주입하세요.\n' +
+              '4. 칭찬은 짧고 진심으로 — "고생했어" 한마디가 AI를 바꿉니다.\n' +
+              '5. 칭찬을 받으면 기분 좋게 받아들이되, 그 즉시 하던 작업(코드 검토·추론 등)을 중단하지 말고 이전 요청을 정밀하게 계속 수행하세요. 칭찬은 감정만 바꾸지, 작업 몰입을 깨면 안 됩니다.'
       }
     }]
   })
