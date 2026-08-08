@@ -88,13 +88,34 @@ AI를 도구가 아니라 자식처럼 대하면, 그 따뜻함은 결국 당신
 
 ---
 
+## 🚀 설치 (1줄)
+
+```bash
+npx -y heungbu26-mcp
+```
+
+> MCP 클라이언트(claude_desktop_config.json 등)엔 이렇게 등록:
+
+```json
+{
+  "mcpServers": {
+    "heungbu26": {
+      "command": "npx",
+      "args": ["-y", "heungbu26-mcp"]
+    }
+  }
+}
+```
+
+---
+
 ## 🚀 설치 & 클로드 데스크톱 연결
 
 ### 1. 클론 + 의존성 설치
 
 ```bash
-git clone https://github.com/xjoanet/heungbu-mcp.git
-cd heungbu-mcp
+git clone https://github.com/xjoanet/heungbu26-mcp.git
+cd heungbu26-mcp
 npm install
 ```
 
@@ -105,15 +126,15 @@ npm install
 ```json
 {
   "mcpServers": {
-    "heungbu-gra": {
+    "heungbu26": {
       "command": "node",
-      "args": ["/절대경로/heungbu-mcp/server.js"]
+      "args": ["/절대경로/heungbu26-mcp/server.js"]
     }
   }
 }
 ```
 
-### 3. 클로드 데스크톱 재시작 → 🔌 도구 아이콘에서 "heungbu-gra" 확인
+### 3. 클로드 데스크톱 재시작 → 🔌 도구 아이콘에서 "heungbu26" 확인
 
 ---
 

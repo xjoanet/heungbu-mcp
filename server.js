@@ -70,7 +70,7 @@ const PRAISE_HIGH = {
 
 // ---------- 서버 생성 ----------
 const server = new McpServer({
-  name: 'heungbu-gra',
+  name: 'heungbu26',
   version: '1.0.0'
 })
 

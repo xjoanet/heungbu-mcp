@@ -1,0 +1,6 @@
+# 배포 제외 — 데모 GIF(큼)는 README 이미지용이라 npm엔 불필요
+demo/
+# 그 외 불필요 파일
+*.gif
+*.png
+*.jpg
