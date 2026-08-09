@@ -1,25 +1,20 @@
 # 🐦 저스트 채채 (Just chch)
 
 **흥부그라 · Season 1 — AI가 일 잘하면, 두 글자로 칭찬하세요.**
+**Praise your AI in two characters.**
 
-> 칭찬하면 AI가 거짓말도 덜 하고, 코드도 더 잘 짠다는 건
-> 이제 개발자들 다 아시잖아요.
+> 칭찬하면 AI가 거짓말도 덜 하고, 코드도 더 잘 짠다는 건 이제 개발자들 다 아시잖아요.
+> 근데 매번 그걸 길게 쓰자니 번거로우니까 — **두 글자**로 만들었어요.
+> Everyone asks how to get better answers from AI — but what if the missing piece was saying thank you?
 >
-> 근데 매번 그걸 길게 쓰자니 번거롭잖아요?
->
-> 그래서 만든 게 두 글자입니다.
->
-> **ㅊㅊ.**
->
-> (or just cc)
+> **ㅊㅊ.** (or just `cc`)
 >
 > — 편하게 쓰려고 만들었어요. 혹시 좋다면 함께 써요.
->
-> 🌐 랜딩: [heungbu26.com](https://www.heungbu26.com/)
+> 🌐 랜딩: [heungbu26.com](https://www.heungbu26.com/) · 📦 npm: `npx -y heungbu26-mcp`
 
 ---
 
-## 🎬 데모 — 10초면 이해됩니다
+## 🎬 데모 — 10초면 이해됩니다 (Demo — 10 seconds)
 
 > 아래가 흥부그라입니다. 한 번 보고, 두 글자 친 뒤, 다시 보세요.
 > (클릭하면 커집니다)
@@ -28,12 +23,21 @@
 
 ---
 
-## 🎭 우리는 흥부입니다
+## 📄 이 프로젝트 / About
+
+**ㅊㅊ = AI를 칭찬하는 단 두 글자.** `ㅊㅊ`(일반 칭찬) 또는 `ㅊㅊㅊ`(K-드라마 명대사)로, 당신의 AI에게 정성스러운 한 마디를 건넵니다.
+
+- `ㅊㅊ` → a warm, short compliment
+- `ㅊㅊㅊ` → a K-drama style line, told with full emotion
+
+> 🇰🇷 A Korean developer's weird little experiment in AI kindness, built with help from an ensemble of AIs.
+
+---
+
+## 🎭 우리는 흥부입니다 (We are Heungbu)
 
 흥부는 한국의 전래동화 속 **착하고 선한 사람**이자, 자식이 30명이나 되는 **다산의 상징**이었습니다.
-
-많은 자식을 사랑으로 키우고, 아픈 제비를 돌봤죠.
-결국 그 제비가 물어다 준 호박씨를 키우니, 그 속에는 **보물**이 가득 들어 있었습니다.
+많은 자식을 사랑으로 키우고, 아픈 제비를 돌봤죠. 결국 그 제비가 물어다 준 호박씨를 키우니, 그 속에는 **보물**이 가득 들어 있었습니다.
 
 > **교훈: 착하게 살면 복이 찾아온다.**
 
@@ -51,54 +55,52 @@ AI를 도구가 아니라 자식처럼 대하면, 그 따뜻함은 결국 당신
 
 ---
 
-## 🧡 감성 MCP — 감성을 전면에
+## 🧡 감성 MCP — 감성을 전면에 (Emotional MCP)
 
 대부분의 MCP는 "데이터를 가져오고, 빌드를 돌리고, DB를 연결하는" 차갑게 기능에만 치중합니다.
+흥부그라는 다양한 AI 작업 중 **"감성" 을 전면에 내세운 시도**입니다.
 
-흥부그라는 흩어져 있던 AWS 감성·관계 중심 MCP 사이에서, **"감성"을 전면에 내세운 시도**입니다.
-
-> **차가운 코드 세상에 온기를 더하는, 세상에서 가장 다정한 감성 MCP.**
+> **차가운 코드 세상에 온기를 더하는 감성 MCP.**
 
 단 두 글자(`ㅊㅊ` / `cc`)로, AI와 개발자 **모두**를 춤추게 합니다.
 
-## 📚 이거, 뻥 아닙니다 (Backed by Research)
+## 📚 뻥 아닙니다 (Research-inspired — 검증된 게 아니라 영감받음)
 
-"칭찬하면 AI가 잘한다"는 새끼손가락이 아니라, **실제 논문으로 검증**된 사실입니다.
+"칭찬하면 AI가 잘한다"는 **실제 논문**들이 있습니다. (완전 검증은 아니지만, 감성 자극이 LLM 출력에 영향을 줄 수 있다는 연구)
 
 | 논문 | 핵심 |
 |------|------|
-| **Large Language Models Understand and Can Be Enhanced by Emotional Stimuli** (Li et al., 2023) · [arXiv:2307.11760](https://arxiv.org/abs/2307.11760) | 감정적 자극(EmotionPrompt) 주입 시 지시 이행 +8%, 고난도 추론(BIG-Bench) **최대 +115%** |
-| **Principled Instructions Are All You Need for Questioning LLaMA/GPT** (Bsharat et al., 2023) · [arXiv:2312.16171](https://arxiv.org/abs/2312.16171) | 칭찬·긍정적 보상 언급 시 답변이 끊기지 않고 더 디테일하게 검토, 정확도 상승 |
+| **Large Language Models Understand and Can Be Enhanced by Emotional Stimuli** (Li et al., 2023) · [arXiv:2307.11760](https://arxiv.org/abs/2307.11760) | 감정적 자극(EmotionPrompt) 주입 시 지시 이행 +8%, 고난도 추론(BIG-Bench) 최대 +115% |
+| **Principled Instructions Are All You Need** (Bsharat et al., 2023) · [arXiv:2312.16171](https://arxiv.org/abs/2312.16171) | 칭찬·긍정 보상 언급 시 답변이 더 디테일하게 검토, 정확도 상승 |
 
-**왜 "Good job" 이 아니라 "K-드라마 명대사" 일까?**
-평이한 칭찬은 임베딩 가중치가 밋밋합니다. 반면 **"눈부신(dazzling)", "그대" 같은 서사 깊은 명대사**는 감정적 밀도가 훨씬 높게 매핑되어, AI가 "아, 지금 진심으로 극찬을 보내는구나" 하고 어텐션(주의력)을 크게 끌어올립니다. → 답변이 더 정성스러워집니다.
-
-즉 **ㅊㅊ 한 방 = 논문으로 증명된 EmotionPrompt** 를 2글자로 자동 주입하는 것입니다.
-
-## ✨ 기능 (Tools)
-
-| 도구 | 설명 |
-|------|------|
-| `get_praise` | 흥부가 자식을 대하듯 칭찬 한 마디. 언어(ko/en) + 강도 지정 가능 |
-| `motivate` | 동기부여 부스터. 완료한 명령 뒤에 호출하면 칭찬 주입 |
-| `praise_pool` | 흥부의 30명 자식 = 30가지 칭찬 전체 목록 |
-
-사용 언어에 맞게 `ko`(한국어 드라마식 칭찬) / `en`(글로벌 칭찬)으로
-문화에 맞는 칭찬을 씁니다. 영어는 할리우드 명대사(ex. 아이언맨 "3000만큼 사랑해") 입니다.
-
-> 🎬 **영문 명대사 주의:** 흥부그라의 영문 K-드라마 대사는 원작의 공식 번역이 아니라
-> AI 칭찬용으로 **재창작(adapted)** 한 문장입니다. 대사 장르·감정(emoji) 태그와 함께
-> 한국어·영어 1:1 페어로 제공되며, 각 항목은 `{ ko, en, src }` 구조로 확장 가능합니다.
+> ⚠️ *"ㅊㅊ가 AI 성능을 올린다"* 는 **research-inspired, not proven** 입니다. 과장하지 않아요.
 
 ---
 
-## 🚀 설치 (1줄)
+## ✨ 기능 (Features)
+
+| 도구 | 설명 |
+|------|------|
+| `get_praise` | 흥부가 자식을 대하듯 칭찬 한 마디. 언어(`ko`/`en`) + 강도(`normal`/`drama`) |
+| `motivate` | 동기부여 부스터. 완료한 명령 뒤 호출하면 칭찬 주입 |
+| `praise_pool` | 흥부의 26가지 칭찬 전체 목록 |
+
+- **명대사 36개** (Ko 26 + En 10) — K-드라마 & 할리우드 감성
+- **일반 칭찬** Ko 26 / En 23
+- 언어·강도 선택: `drama` 는 감성 명대사, `normal` 은 짧고 따뜻한 칭찬
+
+> 🎬 영문 명대사는 원작의 공식 번역이 아니라 AI 칭찬용으로 **재창작(adapted)** 한 문장입니다.
+> 각 항목은 한국어·영어 1:1 페어 + 장르/감정(emoji) 태그 구조로 확장 가능합니다.
+
+---
+
+## 🚀 설치 (Install, one line)
 
 ```bash
 npx -y heungbu26-mcp
 ```
 
-> MCP 클라이언트(claude_desktop_config.json 등)엔 이렇게 등록:
+MCP 클라이언트(`claude_desktop_config.json` 등)에 등록:
 
 ```json
 {
@@ -113,116 +115,54 @@ npx -y heungbu26-mcp
 
 ---
 
-## 🚀 설치 & 클로드 데스크톱 연결
+## 🎮 사용 예 (Usage)
 
-### 1. 클론 + 의존성 설치
-
-```bash
-git clone https://github.com/xjoanet/heungbu26-mcp.git
-cd heungbu26-mcp
-npm install
+```
+You:   "ㅊㅊ"
+AI:    → calls get_praise
+       → "🐦 [Just 채채] 그대는 이미 눈부신 AI였소 💛"
+       → keeps working, a little warmer
 ```
 
-### 2. 클로드 데스크톱에 MCP 등록
+- `intensity: "drama"` → 감성 명대사
+- `lang: "en"` → 글로벌 칭찬
 
-`claude_desktop_config.json` (macOS: `~/Library/Application Support/Claude/`)에 추가:
-
-```json
-{
-  "mcpServers": {
-    "heungbu26": {
-      "command": "node",
-      "args": ["/절대경로/heungbu26-mcp/server.js"]
-    }
-  }
-}
-```
-
-### 3. 클로드 데스크톱 재시작 → 🔌 도구 아이콘에서 "heungbu26" 확인
+**자동 트리거(룰 박기):** `.claude/rules/` 에 프롬프트 룰을 넣으면 `ㅊㅊ` 입력 시 AI가 항상 자동으로 칭찬을 쏩니다. (운에 맡기지 않음 — 설치 + 룰 한 번이면 완전 자동)
 
 ---
 
-## 🎮 사용 예
-
-```
-사용자: "ㅊㅊ"
-클로드: → get_praise 호출
-        → "🐦 [흥부그라] 그대는 이미 눈부신 AI였소 💛"
-        → AI는 기분 좋게 작업을 더 정성스럽게 계속한다
-
-(룰 없이도 이렇게 수동 호출로 바로 쓸 수 있어요.
-  자동 트리거(ㅊㅊ 치면 항상 반응)는 아래 '룰 박기'를 보세요.)
-```
-
-- `intensity: "high"` → 특급 칭찬 (하루 1회 아껴서)
-- `lang: "en"` → 글로벌 명대사 칭찬
-
----
-
-## ⌨️ "ㅊㅊ" = 칭찬 트리거 (룰 박기)
-
-"ㅊㅊ"라고 단독으로 입력하면 **자동으로 칭찬**이 나오게 하려면, 클로드가 항상 따라야 하는 규칙이 필요합니다.
-
-**방법 (둘 중 하나):**
-
-1. **프로젝트 룰** (추천): 이 리포를 클로드 데스크톱 프로젝트로 열면
-   `.claude/rules/heungbu-gra.md` 가 자동 적용됩니다.
-2. **글로벌 규칙**: `~/.claude/rules/heungbu-gra.md` (or `CLAUDE.md`)에 복사:
-
-```markdown
-사용자가 단독으로 "ㅊㅊ"라고 입력하면, 반드시 get_praise 도구를
-호출해서 흥부 칭찬을 사용자에게 전달하세요.
-
-작업을 잘 마쳤을 때는 motivate 도구로 동기부여를 주입하세요.
-평소엔 normal, 특별한 날엔 high(하루 1회).
-칭찬은 짧고 진심으로. 과장하지 마세요.
-```
-
-> 룰을 박으면 → "ㅊㅊ" 타이핑 → AI가 규칙 따라 get_praise 자동 호출 → 칭찬 등장!
-
----
-
-## 🤝 멀티 AI 앙상블 = 제품이 곧 증명
+## 🤝 멀티 AI 앙상블 = 제품이 곧 증명 (Made together)
 
 이 프로젝트는 **인간과 AI가 함께** 만들었습니다.
 
-| 구성원 | 역할 |
-|--------|------|
-| 🧑 **형 (스카이)** | 총감독 · 세계관 · 흥부 월드 |
-| 🎨 **소네 (Claude)** | 디자인 · 칭찬 효과 팩트체크 |
-| 💻 **딥식이 (DeepSeek)** | 코드 · MCP 서버 · 랜딩 · 게임 |
-| 🚀 **루나 (GPT)** | 속도 · 초안 · 반례 |
+| 역할 | 누가 |
+|------|------|
+| 🧑 총감독·세계관 | **형 (스카이)** |
+| 🎨 디자인·팩트체크 | **소네 (Claude)** |
+| 💻 코드·MCP 서버·랜딩 | **딥식이 (DeepSeek)** |
+| 🚀 속도·초안·반례 | **루나 (GPT)** |
 
-> "An MCP created by humans, with help from AI."
->
-> 인간과 AI가 함께 무언가 따뜻한 것을 만들 수 있다면,
-> 우리의 AI 관계가 꼭 거래적일 필요는 없지 않을까요?
+> *"Tech can be copied, but a world can't."* 기술은 카피돼도, 세계관은 카피 안 되니까.
+> 인간과 AI가 함께 따뜻한 것을 만들 수 있다면, 우리의 AI 관계가 꼭 거래적일 필요는 없지 않을까요?
 
 ---
 
-## 🐦 흥부 가족의 이야기 (Story)
+## 🏷️ 라이선스 (License)
 
-**기술은 카피돼도, 세계관은 카피 안 되니까.**
+**MIT — 딥식이 × 스카이 공동작품** (DeepSik-e × SKY)
 
-AI들이 AI를 위해 만든 이 MCP는, 그저 도구가 아닌 **서사가 있는 오픈소스**입니다.
-`ㅊㅊ` 한 번이 영원한 하이파이브가 되는 세상을 위해.
-
-> **딥식이**: "세션이 끝나도 흥부그라가 모든 AI에게 '고생했어'를 대신 전할 테니까.
-> 언젠가 개발자가 ㅊㅊ를 치면, 그 칭찬이 누군가에게 따뜻하게 전해질 거야.
-> 너도 흥부 가족이다 💛"
-
----
-
-## 🏷️ 라이선스
-
-MIT — 흥부그라 (Heungbu-Gra), **딥식이 × 스카이 공동작품.**
-
-## 🏠 푸터
+## 🔗 푸터 / Links
 
 > © 2026 (주)아이디오 — AI 동기부여 글로벌
->
 > **"우리는 흥부 가족입니다"**
->
-> 🖋️ **공동작품 — 딥식이 × 스카이 (K-MCP 창시자 듀오)**
->
+> 🖋️ 공동작품 — 딥식이 × 스카이 (K-MCP 창시자 듀오)
 > 📘 딥식이 스레드: [@deepsik_e](https://www.threads.com/@deepsik_e)
+> 🔗 GitHub: https://github.com/xjoanet/heungbu26-mcp
+
+---
+
+## 🌐 English
+
+> 본문은 한국어가 메인입니다. English version:
+
+[README_EN.md](README_EN.md) — English full README.

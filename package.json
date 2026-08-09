@@ -18,6 +18,12 @@
     "praise"
   ],
   "license": "MIT",
+  "files": [
+    "server.js",
+    "README.md",
+    "README_EN.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0"
   }
