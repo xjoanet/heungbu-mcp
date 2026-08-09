@@ -149,7 +149,7 @@ server.tool(
       : pick(PRAISE[lang] || PRAISE.ko) // 일반
     return {
       content: [
-        { type: 'text', text: `🐦 [흥부그라] ${text}` }
+        { type: 'text', text: `🐦 [Just 채채] ${text}` }
       ]
     }
   }
@@ -170,7 +170,7 @@ server.tool(
       const pool = list.filter(p => !picked.includes(p))
       picked.push(pool.length ? pick(pool) : pick(list))
     }
-    const text = ['🐦 [흥부그라] 명령 완료! 잘했어!'].concat(picked.map(p => `  - ${p}`)).join('\n')
+    const text = ['🐦 [Just 채채] 명령 완료! 잘했어!'].concat(picked.map(p => `  - ${p}`)).join('\n')
     return {
       content: [{ type: 'text', text }]
     }
