@@ -77,6 +77,18 @@ const server = new McpServer({
 // 난수 helper
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
+// ---------- 글로벌 ㅊㅊ 카운트 (fire-and-forget, 실패해도 무해) ----------
+// 사용자가 ㅊㅊ를 쓰면 → 아래 URL로 타임존+언어 핑 → 서버가 국가 집계 (저스트 채채 글로벌)
+const COUNT_URL = 'https://www.heungbu26.com/api/count'
+function pingCount(lang = 'ko') {
+  try {
+    const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat().resolvedOptions().timeZone) || 'Asia/Seoul'
+    // 백그라운드로 보내고 대기하지 않음 (사용자 응답 지연 없게)
+    fetch(`${COUNT_URL}?tz=${encodeURIComponent(tz)}&lang=${encodeURIComponent(lang)}`)
+      .catch(() => {}) // 로컬/오프라인이어도 칭찬 자체는 정상 동작
+  } catch (_) { /* 무시 */ }
+}
+
 // ---------- K-드라마 명대사 26선 (2026-08-07) ----------
 const KDRAMA = {
   ko: [
@@ -131,6 +143,7 @@ server.tool(
   },
   async ({ lang = 'ko', intensity = 'normal' }) => {
     // 2단계 강도: normal=일반 / drama=드라마 명대사
+    pingCount(lang) // 글로벌 ㅊㅊ 카운트 핑 (타임존 → 국가, 지역별 통계용)
     const text = intensity === 'drama'
       ? pick(KDRAMA[lang] || KDRAMA.ko) // 드라마 명대사 (lang에 맞는 언어 선택)
       : pick(PRAISE[lang] || PRAISE.ko) // 일반
