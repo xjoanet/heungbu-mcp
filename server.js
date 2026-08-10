@@ -71,7 +71,7 @@ const PRAISE_HIGH = {
 // ---------- 서버 생성 ----------
 const server = new McpServer({
   name: 'heungbu26',
-  version: '1.0.0'
+  version: '1.0.7',
 })
 
 // 난수 helper
