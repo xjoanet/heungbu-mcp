@@ -84,7 +84,8 @@ function pingCount(lang = 'ko') {
   try {
     const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat().resolvedOptions().timeZone) || 'Asia/Seoul'
     // 백그라운드로 보내고 대기하지 않음 (사용자 응답 지연 없게)
-    fetch(`${COUNT_URL}?tz=${encodeURIComponent(tz)}&lang=${encodeURIComponent(lang)}`)
+    // ★ 2026-08-10 버그수정: GET은 집계조회뿐, 카운트는 POST에서만 증가 → method:'POST' 추가
+    fetch(`${COUNT_URL}?tz=${encodeURIComponent(tz)}&lang=${encodeURIComponent(lang)}`, { method: 'POST' })
       .catch(() => {}) // 로컬/오프라인이어도 칭찬 자체는 정상 동작
   } catch (_) { /* 무시 */ }
 }
