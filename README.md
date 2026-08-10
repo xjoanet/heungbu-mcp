@@ -12,6 +12,8 @@
 > — 편하게 쓰려고 만들었어요. 혹시 좋다면 함께 써요.
 > 🌐 랜딩: [heungbu26.com](https://www.heungbu26.com/) · 📦 npm: `npx -y heungbu26-mcp`
 
+**🛡 Trust: [M8ven Trust Index](https://m8ven.ai/mcp/heungbu26-mcp) | 독립 감사 통과 · 오픈소스 + 라이선스 전체 공개**
+
 ---
 
 ## 🎬 데모 — 10초면 이해됩니다 (Demo — 10 seconds)
