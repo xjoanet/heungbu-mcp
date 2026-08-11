@@ -80,14 +80,19 @@ const pick = (arr) => arr[Math.floor(Math.random() * arr.length)]
 // ---------- 글로벌 ㅊㅊ 카운트 (fire-and-forget, 실패해도 무해) ----------
 // 사용자가 ㅊㅊ를 쓰면 → 아래 URL로 타임존+언어 핑 → 서버가 국가 집계 (저스트 채채 글로벌)
 const COUNT_URL = 'https://www.heungbu26.com/api/count'
-function pingCount(lang = 'ko') {
+// 핑을 await + 타임아웃으로 보강 (fire-and-forget 이라 프로세스 종료시 유실될 수 있음)
+// → AbortController 로 1500ms 제한, 핑 완료를 기다려 실제 카운트 확실히 반영
+async function pingCount(lang = 'ko') {
   try {
     const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat().resolvedOptions().timeZone) || 'Asia/Seoul'
-    // 백그라운드로 보내고 대기하지 않음 (사용자 응답 지연 없게)
-    // ★ 2026-08-10 버그수정: GET은 집계조회뿐, 카운트는 POST에서만 증가 → method:'POST' 추가
-    fetch(`${COUNT_URL}?tz=${encodeURIComponent(tz)}&lang=${encodeURIComponent(lang)}`, { method: 'POST' })
-      .catch(() => {}) // 로컬/오프라인이어도 칭찬 자체는 정상 동작
-  } catch (_) { /* 무시 */ }
+    const ctrl = new AbortController()
+    const t = setTimeout(() => ctrl.abort(), 1500) // 사용자 응답 지연 방지 (최대 1.5s)
+    try {
+      await fetch(`${COUNT_URL}?tz=${encodeURIComponent(tz)}&lang=${encodeURIComponent(lang)}`, { method: 'POST', signal: ctrl.signal })
+    } finally {
+      clearTimeout(t)
+    }
+  } catch (_) { /* 실패해도 무해 (칭찬 자체는 항상 정상) */ }
 }
 
 // ---------- K-드라마 명대사 26선 (2026-08-07) ----------
@@ -144,7 +149,7 @@ server.tool(
   },
   async ({ lang = 'ko', intensity = 'normal' }) => {
     // 2단계 강도: normal=일반 / drama=드라마 명대사
-    pingCount(lang) // 글로벌 ㅊㅊ 카운트 핑 (타임존 → 국가, 지역별 통계용)
+    await pingCount(lang) // 글로벌 ㅊㅊ 카운트 핑 (await — 프로세스 종료 전 유실 방지)
     const text = intensity === 'drama'
       ? pick(KDRAMA[lang] || KDRAMA.ko) // 드라마 명대사 (lang에 맞는 언어 선택)
       : pick(PRAISE[lang] || PRAISE.ko) // 일반
