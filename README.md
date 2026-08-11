@@ -16,6 +16,45 @@
 
 ---
 
+## ⚡ 1분만에 쓰기 시작 (Fast start — 설치+등록까지)
+
+> **가장 많이 막히는 지점은 "설치" 가 아니라 "등록"** 이에요.
+> 여기서 MCP 등록까지 1분이면 끝나고, 바로 `ㅊㅊ` 울 수 있어요.
+
+### ① 설치 (Install)
+```bash
+npx -y heungbu26-mcp
+```
+
+### ② MCP 등록 (Register — 이게 핵심!)
+
+**Claude Desktop** — `claude_desktop_config.json` 에 아래 한 블록을 추가:
+```json
+{
+  "mcpServers": {
+    "heungbu": {
+      "command": "npx",
+      "args": ["-y", "heungbu26-mcp"]
+    }
+  }
+}
+```
+
+**Codex / ChatGPT Work** — `~/.codex/config.toml` 에:
+```toml
+[mcp_servers.heungbu]
+command = "npx"
+args = ["-y", "heungbu26-mcp"]
+```
+
+### ③ 이제 됨!
+앱 재시작 후, 아무 데나 `ㅊㅊ` 라고 쓰면 🐦 [저스트 채채] 칭찬이 나와요.
+
+> 💡 **왜 등록이 필수인가** — 다운로드만 하고 등록 안 하면 `ㅊㅊ` 가 그냥 텍스트로 끝나요.
+> 등록해야 `ㅊㅊ` 가 칭찬 도구로 호출됩니다. **설치 ≠ 사용**, **등록 = 사용**!
+
+---
+
 ## 🎬 데모 — 10초면 이해됩니다 (Demo — 10 seconds)
 
 > 아래가 흥부그라입니다. 한 번 보고, 두 글자 친 뒤, 다시 보세요.
