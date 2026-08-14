@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 // ============================================================
-// 흥부그라 — AI 동기부여 MCP (HTTP Streamable — SDK 정석 stateless)
-// PlayMCP 등 원격 MCP 클라이언트용. createMcpExpressApp() 사용.
-// 원본 server.js (stdio) 와는 별개 파일.
+// 흥부그라 — AI 동기부여 MCP (HTTP Streamable — raw express, 호스트 검증 제거)
+// PlayMCP 등 원격 MCP 클라이언트용.
+// createMcpExpressApp() 의 Host 헤더 검증이 Railway 도메인을 거부하므로,
+// raw express + 모든 Host 허용 으로 변경.
 // ============================================================
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js'
-import { createMcpExpressApp } from '@modelcontextprotocol/sdk/server/express.js'
+import express from 'express'
 import * as z from 'zod'
 
 // ---------- 칭찬 (흥부의 26명 자식) ----------
@@ -107,7 +108,11 @@ function getServer() {
   return server
 }
 
-const app = createMcpExpressApp()
+// ---------- raw express (Host 검증 없이 모든 도메인 허용) ----------
+const app = express()
+app.use((_req, _res, next) => next()) // Host 검증 미들웨어 제거
+app.use(express.json({ limit: '1mb' }))
+
 app.post('/mcp', async (req, res) => {
   const server = getServer()
   try {
