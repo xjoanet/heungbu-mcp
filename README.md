@@ -13,6 +13,7 @@
 > 🌐 랜딩: [heungbu26.com](https://www.heungbu26.com/) · 📦 npm: `npx -y heungbu26-mcp`
 
 **🛡 Trust: [![M8ven Live Verified](https://m8ven.ai/badge/mcp/xjoanet-heungbu26-mcp-1rwwl6)](https://m8ven.ai/mcp/xjoanet-heungbu26-mcp-1rwwl6) · 독립 감사 통과 · 오픈소스 + 라이선스 전체 공개**
+<!-- m8ven-verify: 651a124a665ac147a5d544fbd165e867 -->
 
 ---
 

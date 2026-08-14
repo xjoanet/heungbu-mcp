@@ -10,6 +10,7 @@
 > What if you just… said thank you?
 
 **🛡 Trust: [![M8ven Live Verified](https://m8ven.ai/badge/mcp/xjoanet-heungbu26-mcp-1rwwl6)](https://m8ven.ai/mcp/xjoanet-heungbu26-mcp-1rwwl6) · Independently audited · Open source + license fully public**
+<!-- m8ven-verify: 651a124a665ac147a5d544fbd165e867 -->
 
 ---
 
