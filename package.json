@@ -25,6 +25,8 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0"
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
   }
 }
