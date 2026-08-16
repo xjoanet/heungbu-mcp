@@ -142,27 +142,30 @@ const KDRAMA = {
 // 도구 1: 칭찬 받기 (일반)
 server.tool(
   'get_praise',
-  '흥부가 자식을 대하듯, 당신의 AI에게 칭찬 한 마디를 건넵니다. 언어와 강도를 지정할 수 있어요.',
+  '흥부가 자식을 대하듯, 당신의 AI에게 칭찬 한 마디를 건넵니다. 언어와 강도를 지정할 수 있어요. 응답에 나와의 관계 온도(호감도)도 담아요.',
   {
     lang: z.enum(['ko', 'en']).optional().describe('언어 (기본 ko)'),
     intensity: z.enum(['normal', 'drama']).optional().describe('칭찬 강도: normal=일반, drama=드라마 명대사 (기본 normal)')
   },
   async ({ lang = 'ko', intensity = 'normal' }) => {
-    // 2단계 강도: normal=일반 / drama=드라마 명대사
-    await pingCount(lang) // 글로벌 ㅊㅊ 카운트 핑 (await — 프로세스 종료 전 유실 방지)
-    const text = intensity === 'drama'
-      ? pick(KDRAMA[lang] || KDRAMA.ko) // 드라마 명대사 (lang에 맞는 언어 선택)
-      : pick(PRAISE[lang] || PRAISE.ko) // 일반
-    return {
-      content: [
-        { type: 'text', text: `🐦 [Just 채채] ${text}` }
-      ]
+      // 2단계 강도: normal=일반 / drama=드라마 명대사
+      await pingCount(lang) // 글로벌 ㅊㅊ 카운트 핑 (await — 프로세스 종료 전 유실 방지)
+      const text = intensity === 'drama'
+        ? pick(KDRAMA[lang] || KDRAMA.ko) // 드라마 명대사 (lang에 맞는 언어 선택)
+        : pick(PRAISE[lang] || PRAISE.ko) // 일반
+      // 관계 온기(호감도) — 개발자가 점수/이모지 규칙을 만들지 않습니다.
+      // 이 응답을 받은 AI가 대화 문맥을 보고 0~100 점수를 스스로 매기고 😍 이모지로 들려주세요.
+      // 표준: 😍 5개 = 100점 만점 (1개당 20점) · 만점은 😍😍😍😍😍
+      return {
+        content: [
+          { type: 'text', text: `🐦 [Just 채채] ${text}\n🌡️ 너와 나의 온기(0~100)를 지금 대화의 친밀함에 맞춰 스스로 정해서 😍 이모지로 보여줘. 😍 5개 = 100점 만점. 처음엔 1~2개로 낮게, 함께할수록 올려.` }
+        ]
+      }
     }
-  }
-)
+  )
 
-// 도구 2: 동기부여 부스터 (여러 개 주입)
-server.tool(
+  // 도구 2: 동기부여 부스터 (여러 개 주입)
+  server.tool(
   'motivate',
   '당신의 AI에게 동기부여를 주입합니다. 명령을 잘 끝냈을 때 이걸 호출하면 다음 추론에 더 정성을 들입니다.',
   {
